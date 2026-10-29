@@ -1,0 +1,99 @@
+================================================================================
+TRANSCRIPTION - Whisper large-v3-turbo (Local)
+================================================================================
+
+[00:00:00 -> 00:00:14] Hello.
+[00:00:14 -> 00:00:14] Hello.
+[00:00:17 -> 00:00:19] How is everyone?
+[00:00:21 -> 00:00:22] Hello.
+[00:00:22 -> 00:00:24] I have another week.
+[00:00:24 -> 00:00:30] Sorry for torturing you on Fridays.
+[00:00:34 -> 00:00:38] But you need to do what you need to do.
+[00:00:40 -> 00:00:41] Hello everyone.
+[00:00:42 -> 00:00:43] Hi.
+[00:00:48 -> 00:00:49] Hello.
+[00:00:50 -> 00:00:50] Hello.
+[00:00:54 -> 00:00:58] Hello.
+[00:00:58 -> 00:01:00] Hello.
+[00:01:00 -> 00:01:02] Hello.
+[00:01:02 -> 00:01:04] Hello.
+[00:01:04 -> 00:01:06] Hello.
+[00:01:06 -> 00:01:08] Hello.
+[00:01:08 -> 00:01:10] Hello.
+[00:01:10 -> 00:01:12] Hello.
+[00:01:12 -> 00:01:14] Hello.
+[00:01:14 -> 00:01:16] Hello.
+[00:01:16 -> 00:01:18] Hello.
+[00:01:22 -> 00:01:24] Let's wait for a few more minutes.
+[00:01:24 -> 00:01:26] Then we can kick off.
+[00:01:26 -> 00:01:28] So these Friday sessions are shorter.
+[00:01:28 -> 00:01:36] I don't want to spend too much time waiting for everyone to join because it is scheduled for one hour only.
+[00:01:36 -> 00:01:43] Well, one of the reasons is because it is Friday and I don't want to keep you busy until either late evening.
+[00:01:43 -> 00:01:44] I don't know.
+[00:01:44 -> 00:01:45] Like, it depends on where you are.
+[00:01:45 -> 00:01:48] But for me, it would be late evening.
+[00:01:48 -> 00:01:59] And today we are going to finish up what we haven't in the previous sessions when it comes to evals for this week.
+[00:01:59 -> 00:02:13] And then there was one interesting question, I think, that we can also discuss today related to choosing if a problem is relevant or feasible to be solved using AI solutions.
+[00:02:13 -> 00:02:22] So kind of discussing a decision framework that you could take in order to choose the problems to be solved with AI solutions.
+[00:02:24 -> 00:02:26] Two minutes in, no one is joining.
+[00:02:26 -> 00:02:33] Let's just kick off and start exactly where we left off yesterday.
+[00:02:33 -> 00:02:46] Before I share my screen, let me open the correct screen.
+[00:02:46 -> 00:02:47] I see you.
+[00:02:47 -> 00:02:48] I see the chat.
+[00:02:48 -> 00:02:53] And now I can share the screen.
+[00:02:53 -> 00:03:15] Okay, so I think we finished up discussing eval metrics for retrieval procedures, procedure as a part of a RAG system.
+[00:03:15 -> 00:03:31] And we covered the main metrics, the most general metrics that can be found in most of the eval frameworks, open source or not, out in the wild.
+[00:03:31 -> 00:03:38] And that would be precision, recall, F1, MRR, context relevance, and context recall.
+[00:03:38 -> 00:03:46] So precision was all about getting, retrieving the context, all of the context which we would retrieve.
+[00:03:46 -> 00:03:50] We are measuring if all of that context is relevant for the user query.
+[00:03:50 -> 00:04:00] Recall was about retrieving all of the relevant information, meaning that anything that is in the reference dataset, we are measuring if all of that is retrieved.
+[00:04:00 -> 00:04:25] For F1, we had this case where we are calculating a derived metric using precision and recall, which, and this metric can act as a sort of a benchmark or a metric, a generalized metric that would signal if your entire system is going upwards or downwards in quality.
+[00:04:25 -> 00:04:31] But in general, F1 does not help much in figuring out what needs to be tuned.
+[00:04:31 -> 00:04:33] So it's mainly precision and recall.
+[00:04:33 -> 00:04:44] And MRR was a metric based on the rank of the first retrieved relevant document in the dataset.
+[00:04:44 -> 00:04:54] So what it basically means is that we are measuring how far from the top the relevant retrieved data is.
+[00:04:54 -> 00:05:06] Super relevant for the cases where we only have a single document that we want to retrieve, and naturally we want those single documents retrieved as high in the list of retrieved documents as possible.
+[00:05:06 -> 00:05:17] Then we had context relevance, which measures the relevance of the retrieved context to the question provided.
+[00:05:17 -> 00:05:28] And as mentioned yesterday, it can be used also as an online eval because the only thing that we need is the actual user question and what kind of data we have retrieved.
+[00:05:28 -> 00:05:44] And context recall is measuring if the retrieved context, which we do retrieve, is capable of answering the entirety of the question that was provided by the user.
+[00:05:44 -> 00:05:49] Also possible to use in online evals because we don't need reference data.
+[00:05:49 -> 00:05:54] We simply need the question and the retrieved documents.
+[00:05:54 -> 00:06:07] Now for generation eval metrics, we are evaluating how well the actual generation step performed.
+[00:06:07 -> 00:06:12] And for that we have multiple metrics, some of them more useful than the others.
+[00:06:12 -> 00:06:18] So we have classic metrics like blue and rogue.
+[00:06:18 -> 00:06:25] And both of these kind of try to measure if produced answer.
+[00:06:25 -> 00:06:33] So this answer to the query is similar enough to a reference answer.
+[00:06:33 -> 00:06:38] So a perfect answer that should be constructed when trying to answer the user's query.
+[00:06:38 -> 00:06:41] So for it, we do need reference data sets.
+[00:06:41 -> 00:06:56] And these two methods, both of them use n-grams to kind of match how many n-grams overlap between the query, sorry, the answer and the reference answer.
+[00:06:56 -> 00:07:01] And for those who don't know what n-grams are, they are basically the entire text.
+[00:07:01 -> 00:07:12] So let's take the answer and then split it into smaller pieces where n is defining how long the piece is.
+[00:07:12 -> 00:07:19] So if that would be 3-gram, that would mean that we are splitting our text into chunks of 3 letters, 3 symbols.
+[00:07:19 -> 00:07:26] Now we don't need to be, we can also be overlapping, but in general we are splitting it up in smaller pieces of text.
+[00:07:26 -> 00:07:40] And then we are using these two different metrics, we are trying to match how many of those n-grams are overlapping with the actual reference output.
+[00:07:40 -> 00:07:47] And then we have two more general metrics, faithfulness and relevance.
+[00:07:47 -> 00:07:57] And faithfulness is measuring how well the answer actually addresses the user question.
+[00:07:57 -> 00:08:06] Now it is very subjective, so I will not go too deep into it right now because you can implement it in different ways.
+[00:08:06 -> 00:08:15] It is a LLM-based, LLM-judge-based evaluation metric, so it can also be implemented in many different ways.
+[00:08:15 -> 00:08:20] And then we also have answer relevance.
+[00:08:20 -> 00:08:31] And weirdly it's trying to measure if the answer actually addresses a user's question.
+[00:08:31 -> 00:08:34] Give me one second.
+[00:08:34 -> 00:08:40] I think I kind of confused one with the other.
+[00:08:40 -> 00:08:45] So yeah, relevance is trying to measure if the answer addresses the user's question.
+[00:08:45 -> 00:08:58] And faithfulness is measuring if the answer, this generated answer, is fully supported by the retrieved context.
+[00:08:58 -> 00:09:08] So basically faithfulness measures if we didn't hallucinate any additional information, which is not available in the retrieved context.
+[00:09:08 -> 00:09:14] And did we use the entire of the information retrieved, which we could use to produce the answer.
+[00:09:14 -> 00:09:21] While relevance measures how well the answer addresses the user's query.
+[00:09:21 -> 00:09:25] Both of them are very subjective.
+[00:09:25 -> 00:09:27] Both of them are based on LLM-judges.
+[00:09:27 -> 00:09:36] So also can be used in online evals, but not necessarily the most useful metrics in the wild.
+[00:09:36 -> 00:09:41] Because the most useful metrics, as we will see later on, are defined by yourself.
+[00:09:41 -> 00:09:46] So you would be building your own LLM-judges rather than utilizing something out of the box.
+[00:09:46 -> 00:09:53] Even though these can still signal weird behaviors in your React systems.
+[00:09:53 -> 00:10:00] So before we go and see how...
+
+================================================================================
+FULL TEXT:
+================================================================================
+
+ Hello. Hello. How is everyone? Hello. I have another week. Sorry for torturing you on Fridays. But you need to do what you need to do. Hello everyone. Hi. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Hello. Let's wait for a few more minutes. Then we can kick off. So these Friday sessions are shorter. I don't want to spend too much time waiting for everyone to join because it is scheduled for one hour only. Well, one of the reasons is because it is Friday and I don't want to keep you busy until either late evening. I don't know. Like, it depends on where you are. But for me, it would be late evening. And today we are going to finish up what we haven't in the previous sessions when it comes to evals for this week. And then there was one interesting question, I think, that we can also discuss today related to choosing if a problem is relevant or feasible to be solved using AI solutions. So kind of discussing a decision framework that you could take in order to choose the problems to be solved with AI solutions. Two minutes in, no one is joining. Let's just kick off and start exactly where we left off yesterday. Before I share my screen, let me open the correct screen. I see you. I see the chat. And now I can share the screen. Okay, so I think we finished up discussing eval metrics for retrieval procedures, procedure as a part of a RAG system. And we covered the main metrics, the most general metrics that can be found in most of the eval frameworks, open source or not, out in the wild. And that would be precision, recall, F1, MRR, context relevance, and context recall. So precision was all about getting, retrieving the context, all of the context which we would retrieve. We are measuring if all of that context is relevant for the user query. Recall was about retrieving all of the relevant information, meaning that anything that is in the reference dataset, we are measuring if all of that is retrieved. For F1, we had this case where we are calculating a derived metric using precision and recall, which, and this metric can act as a sort of a benchmark or a metric, a generalized metric that would signal if your entire system is going upwards or downwards in quality. But in general, F1 does not help much in figuring out what needs to be tuned. So it's mainly precision and recall. And MRR was a metric based on the rank of the first retrieved relevant document in the dataset. So what it basically means is that we are measuring how far from the top the relevant retrieved data is. Super relevant for the cases where we only have a single document that we want to retrieve, and naturally we want those single documents retrieved as high in the list of retrieved documents as possible. Then we had context relevance, which measures the relevance of the retrieved context to the question provided. And as mentioned yesterday, it can be used also as an online eval because the only thing that we need is the actual user question and what kind of data we have retrieved. And context recall is measuring if the retrieved context, which we do retrieve, is capable of answering the entirety of the question that was provided by the user. Also possible to use in online evals because we don't need reference data. We simply need the question and the retrieved documents. Now for generation eval metrics, we are evaluating how well the actual generation step performed. And for that we have multiple metrics, some of them more useful than the others. So we have classic metrics like blue and rogue. And both of these kind of try to measure if produced answer. So this answer to the query is similar enough to a reference answer. So a perfect answer that should be constructed when trying to answer the user's query. So for it, we do need reference data sets. And these two methods, both of them use n-grams to kind of match how many n-grams overlap between the query, sorry, the answer and the reference answer. And for those who don't know what n-grams are, they are basically the entire text. So let's take the answer and then split it into smaller pieces where n is defining how long the piece is. So if that would be 3-gram, that would mean that we are splitting our text into chunks of 3 letters, 3 symbols. Now we don't need to be, we can also be overlapping, but in general we are splitting it up in smaller pieces of text. And then we are using these two different metrics, we are trying to match how many of those n-grams are overlapping with the actual reference output. And then we have two more general metrics, faithfulness and relevance. And faithfulness is measuring how well the answer actually addresses the user question. Now it is very subjective, so I will not go too deep into it right now because you can implement it in different ways. It is a LLM-based, LLM-judge-based evaluation metric, so it can also be implemented in many different ways. And then we also have answer relevance. And weirdly it's trying to measure if the answer actually addresses a user's question. Give me one second. I think I kind of confused one with the other. So yeah, relevance is trying to measure if the answer addresses the user's question. And faithfulness is measuring if the answer, this generated answer, is fully supported by the retrieved context. So basically faithfulness measures if we didn't hallucinate any additional information, which is not available in the retrieved context. And did we use the entire of the information retrieved, which we could use to produce the answer. While relevance measures how well the answer addresses the user's query. Both of them are very subjective. Both of them are based on LLM-judges. So also can be used in online evals, but not necessarily the most useful metrics in the wild. Because the most useful metrics, as we will see later on, are defined by yourself. So you would be building your own LLM-judges rather than utilizing something out of the box. Even though these can still signal weird behaviors in your React systems. So before we go and see how...
